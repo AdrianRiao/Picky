@@ -1,0 +1,583 @@
+#!/bin/pam
+entry 13
+types 12
+0 bool b  0 1 2 4 0
+1 char c  0 255 256 4 0
+2 int i  -2147483646 2147483647 0 4 0
+3 float r  0 0 0 4 0
+4 $nil p  0 0 0 8 0
+5 file f  0 0 0 4 0
+6 strength h  0 255 0 4 0
+7 opacity l  0 1 0 4 0
+8 color e  0 6 7 4 0
+Black
+Red
+Green
+Blue
+Yellow
+Orange
+White
+9 button u  0 255 0 4 0
+10 sound e  0 19 20 4 0
+Woosh
+Beep
+Sheep
+Phaser
+Rocket
+CNote
+CsharpNote
+DNote
+DsharpNote
+ENote
+FNote
+FsharpNote
+GNote
+GsharpNote
+ANote
+AsharpNote
+BNote
+Bomb
+Fail
+Tada
+11 $tstr1 s  0 0 1 4 1
+vars 35
+Maxint 2 0x0 2147483647 'casillas.p' 1
+Minint 2 0x4 -2147483646 'casillas.p' 1
+Maxchar 1 0x8 255 'casillas.p' 1
+Minchar 1 0xc 0 'casillas.p' 1
+Minstrength 6 0x10 0 'casillas.p' 1
+Maxstrength 6 0x14 255 'casillas.p' 1
+Transp 7 0x18 0.000000e+00 'casillas.p' 1
+Tlucid 7 0x1c 5.000000e-01 'casillas.p' 1
+Opaque 7 0x20 1.000000e+00 'casillas.p' 1
+NoBut 9 0x24 0 'casillas.p' 1
+Tab 1 0x28 9 'casillas.p' 1
+Del 1 0x2c 249 'casillas.p' 1
+Left 1 0x30 243 'casillas.p' 1
+Right 1 0x34 242 'casillas.p' 1
+MetaLeft 1 0x38 247 'casillas.p' 1
+Nul 1 0x3c 0 'casillas.p' 1
+Down 1 0x40 244 'casillas.p' 1
+Ctrl 1 0x44 240 'casillas.p' 1
+Return 1 0x48 246 'casillas.p' 1
+MetaRight 1 0x4c 248 'casillas.p' 1
+Eol 1 0x50 10 'casillas.p' 1
+Eof 1 0x54 255 'casillas.p' 1
+Esc 1 0x58 27 'casillas.p' 1
+Up 1 0x5c 245 'casillas.p' 1
+Shift 1 0x60 241 'casillas.p' 1
+$s0 11 0x64 ' ' 'casillas.p' 54
+$s1 11 0x68 ' ' 'casillas.p' 56
+$s2 11 0x6c ' ' 'casillas.p' 58
+$s3 11 0x70 ' ' 'casillas.p' 60
+$s4 11 0x74 ' ' 'casillas.p' 62
+$s5 11 0x78 ' ' 'casillas.p' 64
+$s6 11 0x7c ' ' 'casillas.p' 66
+stdin 5 0x80 - 'casillas.p' 1
+stdout 5 0x84 - 'casillas.p' 1
+stdgraph 5 0x88 - 'casillas.p' 1
+procs 14
+0 escribecoord8 0x00000 2 0 0 8 0 'casillas.p' 67
+c 1 0x4 - 'casillas.p' 5
+f 2 0x0 - 'casillas.p' 6
+1 escribecoord7 0x0001e 2 0 0 8 0 'casillas.p' 65
+c 1 0x4 - 'casillas.p' 11
+f 2 0x0 - 'casillas.p' 12
+2 escribecoord6 0x0003a 2 0 0 8 0 'casillas.p' 63
+c 1 0x4 - 'casillas.p' 17
+f 2 0x0 - 'casillas.p' 18
+3 escribecoord5 0x00058 2 0 0 8 0 'casillas.p' 61
+c 1 0x4 - 'casillas.p' 23
+f 2 0x0 - 'casillas.p' 24
+4 escribecoord4 0x00074 2 0 0 8 0 'casillas.p' 59
+c 1 0x4 - 'casillas.p' 29
+f 2 0x0 - 'casillas.p' 30
+5 escribecoord3 0x00090 2 0 0 8 0 'casillas.p' 57
+c 1 0x4 - 'casillas.p' 35
+f 2 0x0 - 'casillas.p' 36
+6 escribecoord2 0x000ae 2 0 0 8 0 'casillas.p' 55
+c 1 0x4 - 'casillas.p' 41
+f 2 0x0 - 'casillas.p' 42
+7 escribecoord1 0x000ca 2 0 0 8 0 'casillas.p' 53
+c 1 0x4 - 'casillas.p' 47
+f 2 0x0 - 'casillas.p' 48
+8 imprimcoordadya 0x000e8 2 0 0 8 0 'casillas.p' 110
+c 1 0x4 - 'casillas.p' 67
+f 2 0x0 - 'casillas.p' 67
+9 intercambiar 0x00194 4 2 0 32 8 'casillas.p' 91
+c1 1 0x18 - 'casillas.p' 77
+f1 2 0x10 - 'casillas.p' 78
+c2 1 0x8 - 'casillas.p' 79
+f2 2 0x0 - 'casillas.p' 80
+aux1 1 0x0 - 'casillas.p' 79
+aux2 2 0x4 - 'casillas.p' 80
+10 esmenorcoord2 0x001ca 4 0 4 16 0 'casillas.p' 90
+c1 1 0xc - 'casillas.p' 85
+f1 2 0x8 - 'casillas.p' 85
+c2 1 0x4 - 'casillas.p' 85
+f2 2 0x0 - 'casillas.p' 85
+11 ordenarcoord 0x001e9 4 0 0 32 0 'casillas.p' 109
+c1 1 0x18 - 'casillas.p' 91
+f1 2 0x10 - 'casillas.p' 91
+c2 1 0x8 - 'casillas.p' 91
+f2 2 0x0 - 'casillas.p' 91
+12 leercoord 0x00219 2 0 0 16 0 'casillas.p' 108
+c 1 0x8 - 'casillas.p' 97
+f 2 0x0 - 'casillas.p' 98
+13 main 0x00233 0 4 0 0 16 'casillas.p' 101
+columna1 1 0x0 - 'casillas.p' 110
+fila1 2 0x4 - 'casillas.p' 110
+columna2 1 0x8 - 'casillas.p' 109
+fila2 2 0xc - 'casillas.p' 109
+text 597
+# escribecoord8()
+# {...}
+# fwrite(stdout: file, succ($c: char))
+00000	arg	0x0000000004	# $c: char;
+00002	ind	0x0000000004
+00004	call	0x0080000031	# succ();
+00006	daddr	0x0000000084	# stdout: file;
+00008	ind	0x0000000004
+0000a	push	0x0000000001
+0000c	call	0x008000000f	# fwrite();
+# fwrite(stdout: file, succ($f: int))
+0000e	arg	0x0000000000	# $f: int;
+00010	ind	0x0000000004
+00012	call	0x0080000031	# succ();
+00014	daddr	0x0000000084	# stdout: file;
+00016	ind	0x0000000004
+00018	push	0x0000000002
+0001a	call	0x008000000f	# fwrite();
+# return <nil>
+0001c	ret	0x0000000000
+# escribecoord7()
+# {...}
+# fwrite(stdout: file, succ($c: char))
+0001e	arg	0x0000000004	# $c: char;
+00020	ind	0x0000000004
+00022	call	0x0080000031	# succ();
+00024	daddr	0x0000000084	# stdout: file;
+00026	ind	0x0000000004
+00028	push	0x0000000001
+0002a	call	0x008000000f	# fwrite();
+# fwrite(stdout: file, $f: int)
+0002c	arg	0x0000000000	# $f: int;
+0002e	ind	0x0000000004
+00030	daddr	0x0000000084	# stdout: file;
+00032	ind	0x0000000004
+00034	push	0x0000000002
+00036	call	0x008000000f	# fwrite();
+# return <nil>
+00038	ret	0x0000000001
+# escribecoord6()
+# {...}
+# fwrite(stdout: file, succ($c: char))
+0003a	arg	0x0000000004	# $c: char;
+0003c	ind	0x0000000004
+0003e	call	0x0080000031	# succ();
+00040	daddr	0x0000000084	# stdout: file;
+00042	ind	0x0000000004
+00044	push	0x0000000001
+00046	call	0x008000000f	# fwrite();
+# fwrite(stdout: file, pred($f: int))
+00048	arg	0x0000000000	# $f: int;
+0004a	ind	0x0000000004
+0004c	call	0x0080000017	# pred();
+0004e	daddr	0x0000000084	# stdout: file;
+00050	ind	0x0000000004
+00052	push	0x0000000002
+00054	call	0x008000000f	# fwrite();
+# return <nil>
+00056	ret	0x0000000002
+# escribecoord5()
+# {...}
+# fwrite(stdout: file, $c: char)
+00058	arg	0x0000000004	# $c: char;
+0005a	ind	0x0000000004
+0005c	daddr	0x0000000084	# stdout: file;
+0005e	ind	0x0000000004
+00060	push	0x0000000001
+00062	call	0x008000000f	# fwrite();
+# fwrite(stdout: file, succ($f: int))
+00064	arg	0x0000000000	# $f: int;
+00066	ind	0x0000000004
+00068	call	0x0080000031	# succ();
+0006a	daddr	0x0000000084	# stdout: file;
+0006c	ind	0x0000000004
+0006e	push	0x0000000002
+00070	call	0x008000000f	# fwrite();
+# return <nil>
+00072	ret	0x0000000003
+# escribecoord4()
+# {...}
+# fwrite(stdout: file, $c: char)
+00074	arg	0x0000000004	# $c: char;
+00076	ind	0x0000000004
+00078	daddr	0x0000000084	# stdout: file;
+0007a	ind	0x0000000004
+0007c	push	0x0000000001
+0007e	call	0x008000000f	# fwrite();
+# fwrite(stdout: file, pred($f: int))
+00080	arg	0x0000000000	# $f: int;
+00082	ind	0x0000000004
+00084	call	0x0080000017	# pred();
+00086	daddr	0x0000000084	# stdout: file;
+00088	ind	0x0000000004
+0008a	push	0x0000000002
+0008c	call	0x008000000f	# fwrite();
+# return <nil>
+0008e	ret	0x0000000004
+# escribecoord3()
+# {...}
+# fwrite(stdout: file, pred($c: char))
+00090	arg	0x0000000004	# $c: char;
+00092	ind	0x0000000004
+00094	call	0x0080000017	# pred();
+00096	daddr	0x0000000084	# stdout: file;
+00098	ind	0x0000000004
+0009a	push	0x0000000001
+0009c	call	0x008000000f	# fwrite();
+# fwrite(stdout: file, succ($f: int))
+0009e	arg	0x0000000000	# $f: int;
+000a0	ind	0x0000000004
+000a2	call	0x0080000031	# succ();
+000a4	daddr	0x0000000084	# stdout: file;
+000a6	ind	0x0000000004
+000a8	push	0x0000000002
+000aa	call	0x008000000f	# fwrite();
+# return <nil>
+000ac	ret	0x0000000005
+# escribecoord2()
+# {...}
+# fwrite(stdout: file, pred($c: char))
+000ae	arg	0x0000000004	# $c: char;
+000b0	ind	0x0000000004
+000b2	call	0x0080000017	# pred();
+000b4	daddr	0x0000000084	# stdout: file;
+000b6	ind	0x0000000004
+000b8	push	0x0000000001
+000ba	call	0x008000000f	# fwrite();
+# fwrite(stdout: file, $f: int)
+000bc	arg	0x0000000000	# $f: int;
+000be	ind	0x0000000004
+000c0	daddr	0x0000000084	# stdout: file;
+000c2	ind	0x0000000004
+000c4	push	0x0000000002
+000c6	call	0x008000000f	# fwrite();
+# return <nil>
+000c8	ret	0x0000000006
+# escribecoord1()
+# {...}
+# fwrite(stdout: file, pred($c: char))
+000ca	arg	0x0000000004	# $c: char;
+000cc	ind	0x0000000004
+000ce	call	0x0080000017	# pred();
+000d0	daddr	0x0000000084	# stdout: file;
+000d2	ind	0x0000000004
+000d4	push	0x0000000001
+000d6	call	0x008000000f	# fwrite();
+# fwrite(stdout: file, pred($f: int))
+000d8	arg	0x0000000000	# $f: int;
+000da	ind	0x0000000004
+000dc	call	0x0080000017	# pred();
+000de	daddr	0x0000000084	# stdout: file;
+000e0	ind	0x0000000004
+000e2	push	0x0000000002
+000e4	call	0x008000000f	# fwrite();
+# return <nil>
+000e6	ret	0x0000000007
+# imprimcoordadya()
+# {...}
+# escribecoord1($c: char, $f: int)
+000e8	arg	0x0000000000	# $f: int;
+000ea	ind	0x0000000004
+000ec	arg	0x0000000004	# $c: char;
+000ee	ind	0x0000000004
+000f0	call	0x0000000007	# escribecoord1();
+# fwrite(stdout: file, $s0=" ")
+000f2	daddr	0x0000000064	# $s0=" ";
+000f4	ind	0x0000000004
+000f6	daddr	0x0000000084	# stdout: file;
+000f8	ind	0x0000000004
+000fa	push	0x000000000b
+000fc	call	0x008000000f	# fwrite();
+# escribecoord2($c: char, $f: int)
+000fe	arg	0x0000000000	# $f: int;
+00100	ind	0x0000000004
+00102	arg	0x0000000004	# $c: char;
+00104	ind	0x0000000004
+00106	call	0x0000000006	# escribecoord2();
+# fwrite(stdout: file, $s1=" ")
+00108	daddr	0x0000000068	# $s1=" ";
+0010a	ind	0x0000000004
+0010c	daddr	0x0000000084	# stdout: file;
+0010e	ind	0x0000000004
+00110	push	0x000000000b
+00112	call	0x008000000f	# fwrite();
+# escribecoord3($c: char, $f: int)
+00114	arg	0x0000000000	# $f: int;
+00116	ind	0x0000000004
+00118	arg	0x0000000004	# $c: char;
+0011a	ind	0x0000000004
+0011c	call	0x0000000005	# escribecoord3();
+# fwrite(stdout: file, $s2=" ")
+0011e	daddr	0x000000006c	# $s2=" ";
+00120	ind	0x0000000004
+00122	daddr	0x0000000084	# stdout: file;
+00124	ind	0x0000000004
+00126	push	0x000000000b
+00128	call	0x008000000f	# fwrite();
+# escribecoord4($c: char, $f: int)
+0012a	arg	0x0000000000	# $f: int;
+0012c	ind	0x0000000004
+0012e	arg	0x0000000004	# $c: char;
+00130	ind	0x0000000004
+00132	call	0x0000000004	# escribecoord4();
+# fwrite(stdout: file, $s3=" ")
+00134	daddr	0x0000000070	# $s3=" ";
+00136	ind	0x0000000004
+00138	daddr	0x0000000084	# stdout: file;
+0013a	ind	0x0000000004
+0013c	push	0x000000000b
+0013e	call	0x008000000f	# fwrite();
+# escribecoord5($c: char, $f: int)
+00140	arg	0x0000000000	# $f: int;
+00142	ind	0x0000000004
+00144	arg	0x0000000004	# $c: char;
+00146	ind	0x0000000004
+00148	call	0x0000000003	# escribecoord5();
+# fwrite(stdout: file, $s4=" ")
+0014a	daddr	0x0000000074	# $s4=" ";
+0014c	ind	0x0000000004
+0014e	daddr	0x0000000084	# stdout: file;
+00150	ind	0x0000000004
+00152	push	0x000000000b
+00154	call	0x008000000f	# fwrite();
+# escribecoord6($c: char, $f: int)
+00156	arg	0x0000000000	# $f: int;
+00158	ind	0x0000000004
+0015a	arg	0x0000000004	# $c: char;
+0015c	ind	0x0000000004
+0015e	call	0x0000000002	# escribecoord6();
+# fwrite(stdout: file, $s5=" ")
+00160	daddr	0x0000000078	# $s5=" ";
+00162	ind	0x0000000004
+00164	daddr	0x0000000084	# stdout: file;
+00166	ind	0x0000000004
+00168	push	0x000000000b
+0016a	call	0x008000000f	# fwrite();
+# escribecoord7($c: char, $f: int)
+0016c	arg	0x0000000000	# $f: int;
+0016e	ind	0x0000000004
+00170	arg	0x0000000004	# $c: char;
+00172	ind	0x0000000004
+00174	call	0x0000000001	# escribecoord7();
+# fwrite(stdout: file, $s6=" ")
+00176	daddr	0x000000007c	# $s6=" ";
+00178	ind	0x0000000004
+0017a	daddr	0x0000000084	# stdout: file;
+0017c	ind	0x0000000004
+0017e	push	0x000000000b
+00180	call	0x008000000f	# fwrite();
+# escribecoord8($c: char, $f: int)
+00182	arg	0x0000000000	# $f: int;
+00184	ind	0x0000000004
+00186	arg	0x0000000004	# $c: char;
+00188	ind	0x0000000004
+0018a	call	0x0000000000	# escribecoord8();
+# fwriteeol(stdout: file)
+0018c	daddr	0x0000000084	# stdout: file;
+0018e	ind	0x0000000004
+00190	call	0x0080000011	# fwriteeol();
+# return <nil>
+00192	ret	0x0000000008
+# intercambiar()
+# {...}
+# %aux1: char = &c1: char
+00194	arg	0x0000000018	# &c1: char;
+00196	ind	0x0000000008
+00198	lvar	0x0000000000	# %aux1: char;
+0019a	stom	0x0000000001
+# %aux2: int = &f1: int
+0019c	arg	0x0000000010	# &f1: int;
+0019e	ind	0x0000000008
+001a0	lvar	0x0000000004	# %aux2: int;
+001a2	stom	0x0000000002
+# &c1: char = &c2: char
+001a4	arg	0x0000000008	# &c2: char;
+001a6	ind	0x0000000008
+001a8	arg	0x0000000018	# &c1: char;
+001aa	ind	0x0000000008
+001ac	stom	0x0000000001
+# &f1: int = &f2: int
+001ae	arg	0x0000000000	# &f2: int;
+001b0	ind	0x0000000008
+001b2	arg	0x0000000010	# &f1: int;
+001b4	ind	0x0000000008
+001b6	stom	0x0000000002
+# &c2: char = %aux1: char
+001b8	lvar	0x0000000000	# %aux1: char;
+001ba	arg	0x0000000008	# &c2: char;
+001bc	ind	0x0000000008
+001be	stom	0x0000000001
+# &f2: int = %aux2: int
+001c0	lvar	0x0000000004	# %aux2: int;
+001c2	arg	0x0000000000	# &f2: int;
+001c4	ind	0x0000000008
+001c6	stom	0x0000000002
+# return <nil>
+001c8	ret	0x0000000009
+# esmenorcoord2()
+# {...}
+# return or(<($f2: int, $f1: int), and(==($f2: int, $f1: int), <($c2: char, $c1: char)))
+001ca	arg	0x000000000c	# $c1: char;
+001cc	ind	0x0000000004
+001ce	arg	0x0000000004	# $c2: char;
+001d0	ind	0x0000000004
+001d2	lt	
+001d3	arg	0x0000000008	# $f1: int;
+001d5	ind	0x0000000004
+001d7	arg	0x0000000000	# $f2: int;
+001d9	ind	0x0000000004
+001db	eq	
+001dc	and	
+001dd	arg	0x0000000008	# $f1: int;
+001df	ind	0x0000000004
+001e1	arg	0x0000000000	# $f2: int;
+001e3	ind	0x0000000004
+001e5	lt	
+001e6	or	
+001e7	ret	0x000000000a
+# ordenarcoord()
+# {...}
+# if(esmenorcoord2(&c1: char, &f1: int, &c2: char, &f2: int))
+001e9	arg	0x0000000000	# &f2: int;
+001eb	ind	0x0000000008
+001ed	ind	0x0000000004
+001ef	arg	0x0000000008	# &c2: char;
+001f1	ind	0x0000000008
+001f3	ind	0x0000000004
+001f5	arg	0x0000000010	# &f1: int;
+001f7	ind	0x0000000008
+001f9	ind	0x0000000004
+001fb	arg	0x0000000018	# &c1: char;
+001fd	ind	0x0000000008
+001ff	ind	0x0000000004
+00201	call	0x000000000a	# esmenorcoord2();
+00203	jmpf	0x0000000217
+# {...}
+# intercambiar(&c1: char, &f1: int, &c2: char, &f2: int)
+00205	arg	0x0000000000	# &f2: int;
+00207	ind	0x0000000008
+00209	arg	0x0000000008	# &c2: char;
+0020b	ind	0x0000000008
+0020d	arg	0x0000000010	# &f1: int;
+0020f	ind	0x0000000008
+00211	arg	0x0000000018	# &c1: char;
+00213	ind	0x0000000008
+00215	call	0x0000000009	# intercambiar();
+# return <nil>
+00217	ret	0x000000000b
+# leercoord()
+# {...}
+# freadln(stdin: file, &c: char)
+00219	arg	0x0000000008	# &c: char;
+0021b	ind	0x0000000008
+0021d	daddr	0x0000000080	# stdin: file;
+0021f	ind	0x0000000004
+00221	push	0x0000000001
+00223	call	0x008000000d	# freadln();
+# freadln(stdin: file, &f: int)
+00225	arg	0x0000000000	# &f: int;
+00227	ind	0x0000000008
+00229	daddr	0x0000000080	# stdin: file;
+0022b	ind	0x0000000004
+0022d	push	0x0000000002
+0022f	call	0x008000000d	# freadln();
+# return <nil>
+00231	ret	0x000000000c
+# main()
+# {...}
+# leercoord(%columna1: char, %fila1: int)
+00233	lvar	0x0000000004	# %fila1: int;
+00235	lvar	0x0000000000	# %columna1: char;
+00237	call	0x000000000c	# leercoord();
+# leercoord(%columna2: char, %fila2: int)
+00239	lvar	0x000000000c	# %fila2: int;
+0023b	lvar	0x0000000008	# %columna2: char;
+0023d	call	0x000000000c	# leercoord();
+# ordenarcoord(%columna1: char, %fila1: int, %columna2: char, %fila2: int)
+0023f	lvar	0x000000000c	# %fila2: int;
+00241	lvar	0x0000000008	# %columna2: char;
+00243	lvar	0x0000000004	# %fila1: int;
+00245	lvar	0x0000000000	# %columna1: char;
+00247	call	0x000000000b	# ordenarcoord();
+# imprimcoordadya(%columna1: char, %fila1: int)
+00249	lvar	0x0000000004	# %fila1: int;
+0024b	ind	0x0000000004
+0024d	lvar	0x0000000000	# %columna1: char;
+0024f	ind	0x0000000004
+00251	call	0x0000000008	# imprimcoordadya();
+# return <nil>
+00253	ret	0x000000000d
+pcs 60
+00000	'casillas.p'	5
+0000e	'casillas.p'	6
+0001c	'casillas.p'	112
+0001e	'casillas.p'	11
+0002c	'casillas.p'	12
+00038	'casillas.p'	112
+0003a	'casillas.p'	17
+00048	'casillas.p'	18
+00056	'casillas.p'	112
+00058	'casillas.p'	23
+00064	'casillas.p'	24
+00072	'casillas.p'	112
+00074	'casillas.p'	29
+00080	'casillas.p'	30
+0008e	'casillas.p'	112
+00090	'casillas.p'	35
+0009e	'casillas.p'	36
+000ac	'casillas.p'	112
+000ae	'casillas.p'	41
+000bc	'casillas.p'	42
+000c8	'casillas.p'	112
+000ca	'casillas.p'	47
+000d8	'casillas.p'	48
+000e6	'casillas.p'	112
+000e8	'casillas.p'	53
+000f2	'casillas.p'	54
+000fe	'casillas.p'	55
+00108	'casillas.p'	56
+00114	'casillas.p'	57
+0011e	'casillas.p'	58
+0012a	'casillas.p'	59
+00134	'casillas.p'	60
+00140	'casillas.p'	61
+0014a	'casillas.p'	62
+00156	'casillas.p'	63
+00160	'casillas.p'	64
+0016c	'casillas.p'	65
+00176	'casillas.p'	66
+00182	'casillas.p'	67
+0018c	'casillas.p'	68
+00192	'casillas.p'	112
+00194	'casillas.p'	75
+0019c	'casillas.p'	76
+001a4	'casillas.p'	77
+001ae	'casillas.p'	78
+001b8	'casillas.p'	79
+001c0	'casillas.p'	80
+001c8	'casillas.p'	112
+001ca	'casillas.p'	85
+001e9	'casillas.p'	90
+00205	'casillas.p'	91
+00217	'casillas.p'	112
+00219	'casillas.p'	97
+00225	'casillas.p'	98
+00231	'casillas.p'	112
+00233	'casillas.p'	107
+00239	'casillas.p'	108
+0023f	'casillas.p'	109
+00249	'casillas.p'	110
+00253	'casillas.p'	112
